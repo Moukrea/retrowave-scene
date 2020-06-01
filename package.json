@@ -1,0 +1,25 @@
+{
+  "name": "retrowave-scene",
+  "version": "0.0.1",
+  "description": "A Retrowave/Synthwave/Vaporwave inspired scene using Three.js",
+  "main": "RetrowaveScene.js",
+  "dependencies": {
+    "three": "^0.117.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moukrea/retrowave-scene.git"
+  },
+  "keywords": [
+    "Threejs",
+    "Three",
+    "Retrowave",
+    "Outrun"
+  ],
+  "author": "moukrea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moukrea/retrowave-scene/issues"
+  },
+  "homepage": "https://github.com/Moukrea/retrowave-scene#readme"
+}
