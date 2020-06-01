@@ -15,20 +15,20 @@
 // Find a way to generate procedural sky only on the visible area (and ignore the rest) to ease ressource usage
 
 
-import * as THREE from '../../node_modules/three/build/three.module.js';
+import * as THREE from '../node_modules/three/build/three.module.js';
 
-import Stats from '../../node_modules/three/examples/jsm/libs/stats.module.js'; 								// To get FPS counter
+import Stats from '../node_modules/three/examples/jsm/libs/stats.module.js'; 								// To get FPS counter
 
-import { BufferGeometryUtils } from '../../node_modules/three/examples/jsm/utils/BufferGeometryUtils.js'; 	    // To be able to buffer geometries
-import { SVGLoader } from '../../node_modules/three/examples/jsm/loaders/SVGLoader.js'; 						// To be able to load SVG graphics
-import { SceneUtils } from '../../node_modules/three/examples/jsm/utils/SceneUtils.js';
+import { BufferGeometryUtils } from '../node_modules/three/examples/jsm/utils/BufferGeometryUtils.js'; 	    // To be able to buffer geometries
+import { SVGLoader } from '../node_modules/three/examples/jsm/loaders/SVGLoader.js'; 						// To be able to load SVG graphics
+import { SceneUtils } from '../node_modules/three/examples/jsm/utils/SceneUtils.js';
 
 // POST-PROCESSING
-import { EffectComposer } from '../../node_modules/three/examples/jsm/postprocessing/EffectComposer.js'; 		// To merge post-processing effects
-import { RenderPass } from '../../node_modules/three/examples/jsm/postprocessing/RenderPass.js'; 				// To render post-processing effects
-import { UnrealBloomPass } from '../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';	    // Bloom/Glow
-import { GlitchPass } from '../../node_modules/three/examples/jsm/postprocessing/GlitchPass.js'; 				// Glitch effect
-import { FilmPass } from '../../node_modules/three/examples/jsm/postprocessing/FilmPass.js'; 					// CRT effect
+import { EffectComposer } from '../node_modules/three/examples/jsm/postprocessing/EffectComposer.js'; 		// To merge post-processing effects
+import { RenderPass } from '../node_modules/three/examples/jsm/postprocessing/RenderPass.js'; 				// To render post-processing effects
+import { UnrealBloomPass } from '../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';	    // Bloom/Glow
+import { GlitchPass } from '../node_modules/three/examples/jsm/postprocessing/GlitchPass.js'; 				// Glitch effect
+import { FilmPass } from '../node_modules/three/examples/jsm/postprocessing/FilmPass.js'; 					// CRT effect
 
 
 
