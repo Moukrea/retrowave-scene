@@ -4,7 +4,7 @@ A Retrowave/Synthwave/Vaporwave inspired scene using Three.js
 The scene doesn't include any of its dependencies.
 
 ## How to install
-The following guidelines are targeted towards non-npm based projects (no webpack/browserify, vanilla JS)
+The following guidelines are targeted towards non-npm based projects (no webpack/browserify, vanilla JS). However it does require npm in order to get the scene dependencies.
 
 You can add this scene to your project using git submodules, running the following command :\
 ``git submodule add https://github.com/Moukrea/retrowave-scene.git your/desired/directory/retrowave-scene``
