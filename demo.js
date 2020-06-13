@@ -1,6 +1,5 @@
 "use strict";
 
-// Import RetrowaveScene
 import { RetrowaveScene } from "./retrowave_scene.js";
 
 document.addEventListener("DOMContentLoaded", loadComplete);
@@ -27,5 +26,5 @@ function loadComplete() {
 	// retrowaveScene.addControls();
 	// retrowaveScene.animate();
 	// retrowaveScene.autoAdjustOnResize();
-	retrowaveScene.prepareScene(true, true);
+	retrowaveScene.prepareScene(false, true);
 }
