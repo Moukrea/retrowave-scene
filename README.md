@@ -1,4 +1,9 @@
 # retrowave-scene
+
+<p align="center">
+  <img src="https://github.com/Moukrea/retrowave-scene/blob/master/logo.png?raw=true">
+</p>
+
 A Retrowave/Synthwave/Vaporwave inspired scene using Three.js
 
 The scene doesn't include any of its dependencies.
