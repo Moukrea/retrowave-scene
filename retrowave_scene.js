@@ -95,8 +95,14 @@ export var RetrowaveScene = function (scenePath) {
 	this.renderer = new THREE.WebGLRenderer();
 	this.renderer.setPixelRatio(window.devicePixelRatio);
 	this.renderer.setSize(window.innerWidth, window.innerHeight);
+	this.renderer.domElement.id = "retrowaveScene";
 
-	document.body.appendChild(this.renderer.domElement);
+	// This lets the user chose where he wants to include the scene. If the id "retrowaveSceneContainer" isn't found in the DOM, it includes it in the body
+	let canvas = document.getElementById("retrowaveSceneContainer");
+	if (!canvas) {
+		document.body.appendChild(this.renderer.domElement);
+	}
+	else { canvas.appendChild(this.renderer.domElement); }
 
 	// SCENE
 	this.scene = new THREE.Scene();
