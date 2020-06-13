@@ -14,20 +14,20 @@
 // Add radomly flying birds
 // Find a way to generate procedural sky only on the visible area (and ignore the rest) to ease ressource usage
 
-import * as THREE from "/node_modules/three/build/three.module.js";
+import * as THREE from "./node_modules/three/build/three.module.js";
 
-import Stats from "/node_modules/three/examples/jsm/libs/stats.module.js"; // To get FPS counter
+import Stats from "./node_modules/three/examples/jsm/libs/stats.module.js"; // To get FPS counter
 
-import { BufferGeometryUtils } from "/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js"; // To be able to buffer geometries
-import { SVGLoader } from "/node_modules/three/examples/jsm/loaders/SVGLoader.js"; // To be able to load SVG graphics
-import { SceneUtils } from "/node_modules/three/examples/jsm/utils/SceneUtils.js";
+import { BufferGeometryUtils } from "./node_modules/three/examples/jsm/utils/BufferGeometryUtils.js"; // To be able to buffer geometries
+import { SVGLoader } from "./node_modules/three/examples/jsm/loaders/SVGLoader.js"; // To be able to load SVG graphics
+import { SceneUtils } from "./node_modules/three/examples/jsm/utils/SceneUtils.js";
 
 // POST-PROCESSING
-import { EffectComposer } from "/node_modules/three/examples/jsm/postprocessing/EffectComposer.js"; // To merge post-processing effects
-import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/RenderPass.js"; // To render post-processing effects
-import { UnrealBloomPass } from "/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js"; // Bloom/Glow
-import { GlitchPass } from "/node_modules/three/examples/jsm/postprocessing/GlitchPass.js"; // Glitch effect
-import { FilmPass } from "/node_modules/three/examples/jsm/postprocessing/FilmPass.js"; // CRT effect
+import { EffectComposer } from "./node_modules/three/examples/jsm/postprocessing/EffectComposer.js"; // To merge post-processing effects
+import { RenderPass } from "./node_modules/three/examples/jsm/postprocessing/RenderPass.js"; // To render post-processing effects
+import { UnrealBloomPass } from "./node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js"; // Bloom/Glow
+import { GlitchPass } from "./node_modules/three/examples/jsm/postprocessing/GlitchPass.js"; // Glitch effect
+import { FilmPass } from "./node_modules/three/examples/jsm/postprocessing/FilmPass.js"; // CRT effect
 
 /////////////////////////////////////////////////////////////////////////////////
 // RETROWAVE SCENE
@@ -37,10 +37,17 @@ import { FilmPass } from "/node_modules/three/examples/jsm/postprocessing/FilmPa
  * RetrowaveScene class
  * On call, sets all minimum requirement for the scene to work
  */
-export var RetrowaveScene = function () {
+export var RetrowaveScene = function (scenePath) {
 	// DEFAULT ANIMATION SPEED
 	// This can be changed anytime with setAnimationSpeed method (changing directly this.animationSpeed won't have any effect as the whole animation relies on shaders uniforms)
 	this.animationSpeed = 15;
+
+	// SCENE PATH
+	// As relative path doesn't work properly, the user can set the scene path to be able to load graphics
+	if (!scenePath) {
+		scenePath = ''; // If unspecified, scenePath is an empty string
+	}
+	this.scenePath = scenePath;
 
 	// DEFAULT TEXTURE RESOLUTION
 	// As for the skybox, for some odd reason, 2048 are heavier than 4096 in file weight, but use less ressource... 1024 textures are really hugly, use only if required
@@ -49,18 +56,18 @@ export var RetrowaveScene = function () {
 	// RESSOURCES
 	// You can set all SVG files you want to load in this array...
 	this.svgFiles = [
-		["./scenery/sun.svg", 0, 40, -500, 0.11, "sun"],
-		["./scenery/city_far.svg", 0, 15, -450, 0.4, "cityFar"],
-		["./scenery/city_close.svg", 0, 28, -300, 0.2, "cityClose"],
+		[`./${this.scenePath}scenery/sun.svg`, 0, 40, -500, 0.11, "sun"],
+		[`./${this.scenePath}scenery/city_far.svg`, 0, 15, -450, 0.4, "cityFar"],
+		[`./${this.scenePath}scenery/city_close.svg`, 0, 28, -300, 0.2, "cityClose"],
 	];
 	// ... and specify your skybox textures here
 	this.skybox = [
-		`./skybox/${this.textureResolution}/px.png`, // X+
-		`./skybox/${this.textureResolution}/nx.png`, // X-
-		`./skybox/${this.textureResolution}/py.png`, // Y+
-		`./skybox/${this.textureResolution}/invisible.png`, // Y- (out of camera FoV here)
-		`./skybox/${this.textureResolution}/invisible.png`, // Z+ (out of camera FoV here)
-		`./skybox/${this.textureResolution}/nz.png`, // Z-
+		`./${this.scenePath}skybox/${this.textureResolution}/px.png`, // X+
+		`./${this.scenePath}skybox/${this.textureResolution}/nx.png`, // X-
+		`./${this.scenePath}skybox/${this.textureResolution}/py.png`, // Y+
+		`./${this.scenePath}skybox/${this.textureResolution}/invisible.png`, // Y- (out of camera FoV here)
+		`./${this.scenePath}skybox/${this.textureResolution}/invisible.png`, // Z+ (out of camera FoV here)
+		`./${this.scenePath}skybox/${this.textureResolution}/nz.png`, // Z-
 	];
 
 	// POSITION HISTORY (avoid overlaping geometries)
@@ -663,13 +670,13 @@ RetrowaveScene.prototype.checkPositionHistory = function (
 		if (
 			// if current position + current size overlaps with previously set positions (-/+) their own size
 			currentPositionX + currentSize >
-				this.positionHistory[i].positionX - this.positionHistory[i].size &&
+			this.positionHistory[i].positionX - this.positionHistory[i].size &&
 			currentPositionZ + currentSize >
-				this.positionHistory[i].positionZ - this.positionHistory[i].size &&
+			this.positionHistory[i].positionZ - this.positionHistory[i].size &&
 			currentPositionX - currentSize <
-				this.positionHistory[i].positionX + this.positionHistory[i].size &&
+			this.positionHistory[i].positionX + this.positionHistory[i].size &&
 			currentPositionZ - currentSize <
-				this.positionHistory[i].positionZ + this.positionHistory[i].size
+			this.positionHistory[i].positionZ + this.positionHistory[i].size
 		) {
 			overlapDetected = true;
 		}
