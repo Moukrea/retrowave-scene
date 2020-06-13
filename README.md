@@ -24,8 +24,9 @@ and make sure you include your JavaScript file into your HTML as a module\
 ``<script type="module" src="your_javascript_file.js"></script>``\
 Check the demo for a working exemple.
 
-To set the scene in your JavaScript file, add the following commands:
-``var retrowaveScene = new RetrowaveScene('your/desired/directory/retrowave_scene/'); \\ Specify the scene path to be able to load its graphics properly``\
+To set the scene in your JavaScript file, add the following commands:\
+``var retrowaveScene = new RetrowaveScene('your/desired/directory/retrowave_scene/');``\
+Specify the scene path to be able to load its graphics properly\
 ``retrowaveScene.prepareScene(false, true);``\
 Set first parameter to true if you want procedural sky, false if you want to use skybox
 Set second parameter to true if you want to start the animation, false elsewise
