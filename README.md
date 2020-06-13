@@ -12,10 +12,10 @@ The scene doesn't include any of its dependencies.
 The following guidelines are targeted towards non-npm based projects (no webpack/browserify, vanilla JS). However it does require npm in order to get the scene dependencies.
 
 You can add this scene to your project using git submodules, running the following command :\
-``git submodule add https://github.com/Moukrea/retrowave-scene.git your/desired/directory/retrowave_scene``
+``git submodule add https://github.com/Moukrea/retrowave-scene.git your/desired/directory/retrowave-scene``
 
 Then, you have to get this scene dependencies (three.js) through npm :\
-``cd your/desired/directory/retrowave_scene``\
+``cd your/desired/directory/retrowave-scene``\
 ``npm install``
 
 After that, all you have to to is to import retrowave_scene.js into your JavaScript file (at top level) like this :\
@@ -25,7 +25,7 @@ and make sure you include your JavaScript file into your HTML as a module\
 Check the demo for a working exemple.
 
 To set the scene in your JavaScript file, add the following commands:\
-``var retrowaveScene = new RetrowaveScene('your/desired/directory/retrowave_scene/');``\
+``var retrowaveScene = new RetrowaveScene('your/desired/directory/retrowave-scene/');``\
 Specify the scene path to be able to load its graphics properly\
 ``retrowaveScene.prepareScene(false, true);``\
 Set first parameter to true if you want procedural sky, false if you want to use skybox
