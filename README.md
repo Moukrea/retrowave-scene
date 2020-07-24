@@ -42,5 +42,6 @@ clone this repository wherever you want using:
 
 Then install dependencies (three.js) using ``npm install`` from the retrowave scene folder.
 
-Then run a local server such as ``php -S localhost:3000`` and open this URL in your browser,
+Then run a local server such as ``php -S localhost:3000`` and open this URL in your browser.
+
 That's all folks!
