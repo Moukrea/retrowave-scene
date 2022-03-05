@@ -4,7 +4,7 @@
   "description": "A Retrowave/Synthwave/Vaporwave inspired scene using Three.js",
   "main": "RetrowaveScene.js",
   "dependencies": {
-    "three": "^0.117.1"
+    "three": "^0.137.0"
   },
   "repository": {
     "type": "git",
